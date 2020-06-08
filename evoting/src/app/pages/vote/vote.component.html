@@ -1,0 +1,60 @@
+<p>Voting site!</p>
+
+<mat-horizontal-stepper #stepper linear>
+  <mat-step>
+    <ng-template matStepLabel>Start</ng-template>
+    <p>Welcome in the voting process!</p>
+    <div>
+      <button mat-raised-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Authenticate</ng-template>
+    <p>Please authenticate yourself with your trusted Identity Provider:</p>
+    <div class="idp-list-container">
+        <mat-card class="idp-card mat-elevation-z2">
+            <mat-card-header>
+              <mat-card-title>AWS Cognito</mat-card-title>
+            </mat-card-header>
+            <img
+              mat-card-image
+              src="https://www.pscloud.pl/wp-content/uploads/2019/11/1280px-Amazon_Web_Services_Logo.svg.png"
+              alt="AWS Cognito"
+            />
+            <mat-card-content>
+              <p>
+                AWS Cognito service description...
+              </p>
+            </mat-card-content>
+          </mat-card>
+    </div>
+    <div>
+      <button mat-raised-button matStepperPrevious>Back</button>
+      <button mat-raised-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Choose an Election</ng-template>
+    <p>Choose an Election.</p>
+    <div>
+      <button mat-raised-button matStepperPrevious>Back</button>
+      <button mat-raised-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Make a Vote</ng-template>
+    <p>Make a Vote.</p>
+    <div>
+      <button mat-raised-button matStepperPrevious>Back</button>
+      <button mat-raised-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-raised-button matStepperPrevious>Back</button>
+      <button mat-raised-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
