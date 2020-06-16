@@ -1,0 +1,16 @@
+<mat-toolbar>
+    <button mat-raised-button color="primary" routerLink="/results">Back</button>
+</mat-toolbar>
+
+<p class="mat-display-1">Voting Results Dashboard:</p>
+
+<div class="width-50">
+    <canvas ngChartjs *ngIf="summaryChartData && summaryChartLabels" [datasets]="summaryChartData" [labels]="summaryChartLabels"
+          [options]="lineChartOptions" [legend]="lineChartLegend" chartType="pie">
+    </canvas>
+</div>
+<div class="width-50">
+    <canvas ngChartjs [datasets]="lineChartData" [labels]="lineChartLabels"
+          [options]="lineChartOptions" [legend]="lineChartLegend" [chartType]="lineChartType">
+    </canvas>
+</div>

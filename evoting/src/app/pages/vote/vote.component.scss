@@ -1,9 +1,35 @@
 .idp-card {
-    display: inline-block;
-    width: 300px;
-    height: 300px;
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  cursor: pointer;
 }
 .idp-card > mat-card-image {
-    width: 300px;
-    height: 200px;
+  width: 300px;
+  height: 200px;
+}
+
+.election-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+.election-radio-button {
+  margin: 5px;
+}
+
+.vote-card {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+  cursor: pointer;
+}
+.vote-card-image {
+  width: 170px;
+  height: 150px;
+  margin: 15px;
+}
+.vote-card-selected {
+    background-color: #ffd740;
 }

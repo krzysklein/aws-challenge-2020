@@ -1,0 +1,26 @@
+<p class="mat-display-1">Voting Results Database:</p>
+
+<div *ngIf="!elections" class="center-content">
+    <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="elections">
+    <div *ngFor="let election of elections" class="election-card-container">
+        <mat-card class="election-card mat-elevation-z8">
+            <mat-card-header>
+            <mat-card-title>{{election.name}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="election.photoUrl" class="election-card-image">
+            <!-- <mat-card-content>
+            <p>
+                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                bred for hunting.
+            </p>
+            </mat-card-content> -->
+            <mat-card-actions>
+            <button mat-raised-button color="primary" *ngIf="!election.isActive" [routerLink]="['/results/', election.id]">See Results</button>
+            <span *ngIf="election.isActive">Voting is active</span>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
