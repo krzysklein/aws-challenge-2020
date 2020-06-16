@@ -1,93 +1,129 @@
-<p class="mat-display-1">Voting:</p>
+<div class="page-container">
+  <p class="mat-display-1 margin-0">Voting:</p>
 
-<mat-horizontal-stepper #stepper linear (selectionChange)="onStepperSelectionChange($event)">
-  <mat-step>
-    <ng-template matStepLabel>Start</ng-template>
-    <p>Welcome in the voting process!</p>
-    <div>
-      <button mat-raised-button color="primary" matStepperNext>Next</button>
-    </div>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Authenticate</ng-template>
-    <div class="idp-list-container" *ngIf="!identity && !identityLoading">
-        <p>Please authenticate yourself with your trusted Identity Provider:</p>
-        <mat-card class="idp-card mat-elevation-z2" (click)="authenticate('aws-cognito')">
-          <mat-card-header>
-            <mat-card-title>AWS Cognito</mat-card-title>
-          </mat-card-header>
-          <img mat-card-image src="https://www.pscloud.pl/wp-content/uploads/2019/11/1280px-Amazon_Web_Services_Logo.svg.png" />
-          <mat-card-content>
-            <p>
-              AWS Cognito Identity Provider
-            </p>
-          </mat-card-content>
-        </mat-card>
-    </div>
-    <div *ngIf="!identity && identityLoading">
-      <mat-spinner></mat-spinner>
-    </div>
-    <div *ngIf="identity">
-      <p>Your Identity data is:</p>
-      <mat-list>
-        <mat-list-item> First Name: {{identity.firstName}} </mat-list-item>
-        <mat-list-item> Last Name: {{identity.lastName}} </mat-list-item>
-        <mat-list-item> Sex: {{identity.sex}} </mat-list-item>
-        <mat-list-item> Age: {{identity.age}} </mat-list-item>
-        <mat-list-item> Country: {{identity.country}} </mat-list-item>
-        <mat-list-item> Region: {{identity.region}} </mat-list-item>
-       </mat-list>
-    </div>
-    <div>
-      <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-      <button mat-raised-button color="primary" matStepperNext [disabled]="!identity">Next</button>
-    </div>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Choose an Election</ng-template>
-    <div *ngIf="!elections">
-      <mat-spinner></mat-spinner>
-    </div>
-    <div *ngIf="elections">
-      <label>Choose an Election:</label>
-      <mat-radio-group class="election-radio-group" [(ngModel)]="election">
-        <mat-radio-button class="election-radio-button" *ngFor="let e of elections" [value]="e">
-          {{e.name}}
-        </mat-radio-button>
-      </mat-radio-group>
-    </div>
-    <div>
-      <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-      <button mat-raised-button color="primary" matStepperNext [disabled]="!election">Next</button>
-    </div>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Make a Vote</ng-template>
-    <div class="vote-list-container" *ngIf="election">
-      <p>Make a Vote:</p>      
-      <mat-card class="vote-card mat-elevation-z2" *ngFor="let v of election.items" (click)="selectVote(v)" [ngClass]="{'vote-card-selected': v == voteItem }">
-        <mat-card-header>
-          <mat-card-title>{{v.name}}</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image [src]="v.photoUrl" class="vote-card-image" />
-        <!-- <mat-card-content>
-          <p>
-            {{v.name}}
-          </p>
-        </mat-card-content> -->
-      </mat-card>
-  </div>
-    <div>
-      <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-      <button mat-raised-button color="primary" matStepperNext [disabled]="!voteItem">Next</button>
-    </div>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <!-- <button mat-raised-button color="primary" matStepperPrevious>Back</button> -->
-      <button mat-raised-button color="primary" (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>
-</mat-horizontal-stepper>
+  <mat-horizontal-stepper #stepper linear (selectionChange)="onStepperSelectionChange($event)">
+    <mat-step>
+      <ng-template matStepLabel>Start</ng-template>
+      <div class="voting-step-container">
+        <p class="mat-headline">Welcome to the voting process!</p>
+      </div>
+      <div class="voting-buttons">
+        <button mat-raised-button color="primary" matStepperNext>Next <mat-icon>navigate_next</mat-icon></button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Authenticate</ng-template>
+      <div class="voting-step-container">
+        <div class="idp-list-container" *ngIf="!identity && !identityLoading">
+          <p class="mat-headline">Please authenticate yourself with your trusted Identity Provider:</p>
+          <div class="idp-list">
+            <mat-card class="idp-card mat-elevation-z8" (click)="authenticate('aws-cognito')">
+              <mat-card-header>
+                <mat-card-title>AWS Cognito</mat-card-title>
+              </mat-card-header>
+              <img mat-card-image src="https://www.pscloud.pl/wp-content/uploads/2019/11/1280px-Amazon_Web_Services_Logo.svg.png" />
+              <mat-card-content>
+                <p>
+                  AWS Cognito Identity Provider
+                </p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+        <div *ngIf="!identity && identityLoading">
+          <p class="mat-title">Loading identity data...</p>
+          <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="identity">
+          <p class="mat-headline">Your Identity data is:</p>
+          <mat-list>
+            <mat-list-item> First Name: {{identity.firstName}} </mat-list-item>
+            <mat-list-item> Last Name: {{identity.lastName}} </mat-list-item>
+            <mat-list-item> Sex: {{identity.sex}} </mat-list-item>
+            <mat-list-item> Age: {{identity.age}} </mat-list-item>
+            <mat-list-item> Country: {{identity.country}} </mat-list-item>
+            <mat-list-item> Region: {{identity.region}} </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+      <div class="voting-buttons">
+        <button mat-raised-button color="primary" matStepperPrevious><mat-icon>navigate_before</mat-icon> Back</button>
+        <button mat-raised-button color="primary" matStepperNext [disabled]="!identity">Next <mat-icon>navigate_next</mat-icon></button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Election</ng-template>
+      <div class="voting-step-container">
+        <div *ngIf="!elections">
+          <p class="mat-title">Loading elections...</p>
+          <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="elections">
+          <label class="mat-headline">Choose an Election:</label>
+          <mat-radio-group class="election-radio-group" [(ngModel)]="election">
+            <mat-radio-button class="election-radio-button" *ngFor="let e of elections" [value]="e">
+              {{e.name}}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <div class="voting-buttons">
+        <button mat-raised-button color="primary" matStepperPrevious><mat-icon>navigate_before</mat-icon> Back</button>
+        <button mat-raised-button color="primary" matStepperNext [disabled]="!election">Next <mat-icon>navigate_next</mat-icon></button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Candidate</ng-template>
+      <div class="voting-step-container">
+        <div class="vote-list-container" *ngIf="election">
+          <p class="mat-headline">Choose your candidate:</p>      
+          <mat-card class="vote-card mat-elevation-z8" *ngFor="let v of election.items" (click)="selectVote(v)" [ngClass]="{'vote-card-selected': v == voteItem }">
+            <mat-card-header>
+              <mat-card-title>{{v.name}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="v.photoUrl" class="vote-card-image" />
+          </mat-card>
+        </div>
+      </div>
+      <div class="voting-buttons">
+        <button mat-raised-button color="primary" matStepperPrevious><mat-icon>navigate_before</mat-icon> Back</button>
+        <button mat-raised-button color="primary" matStepperNext [disabled]="!voteItem">Next <mat-icon>navigate_next</mat-icon></button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Submit</ng-template>
+      <div class="voting-step-container">
+        <div *ngIf="!voteCompleted">
+          <p class="mat-headline">You are ready to send your vote:</p>
+          <div *ngIf="election" class="margin-left-20">
+            <p class="mat-title">{{election.name}}</p>
+          </div>
+          <div *ngIf="voteItem">
+            <mat-card class="vote-card vote-card-selected margin-left-10 mat-elevation-z8">
+              <mat-card-header>
+                <mat-card-title>{{voteItem.name}}</mat-card-title>
+              </mat-card-header>
+              <img mat-card-image [src]="voteItem.photoUrl" class="vote-card-image" />
+            </mat-card>
+          </div>
+          <div *ngIf="voteSubmitting">
+            <p class="mat-title">Submitting vote...</p>
+            <mat-spinner></mat-spinner>
+          </div>
+          <div *ngIf="!voteSubmitting">
+            <button mat-raised-button class="submit-vote-button" color="warn" (click)="submitVote()">Submit!</button>
+          </div>
+        </div>
+        <div *ngIf="voteCompleted">
+          <p class="mat-headline">Voting completed!</p>
+        </div>
+      </div>
+      <div class="voting-buttons">
+        <button mat-raised-button color="primary" matStepperPrevious [disabled]="voteSubmitting || voteCompleted"><mat-icon>navigate_before</mat-icon> Back</button>
+        <button mat-raised-button color="primary" (click)="stepper.reset()"><mat-icon>refresh</mat-icon> Go to Start</button>
+        <button mat-raised-button color="primary" routerLink="/"><mat-icon>home</mat-icon> Go to Home Page</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+</div>

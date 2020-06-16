@@ -1,16 +1,42 @@
-<mat-toolbar>
-    <button mat-raised-button color="primary" routerLink="/results">Back</button>
+<mat-toolbar class="toolbar">
+    <button mat-raised-button color="primary" routerLink="/results"><mat-icon>navigate_before</mat-icon> Back</button>
+    <button mat-raised-button color="primary" (click)="downloadFile()"><mat-icon>get_app</mat-icon> Download</button>
 </mat-toolbar>
 
-<p class="mat-display-1">Voting Results Dashboard:</p>
+<div class="page-container">
+    <p class="mat-display-1 margin-0">Voting Results Dashboard:</p>
 
-<div class="width-50">
-    <canvas ngChartjs *ngIf="summaryChartData && summaryChartLabels" [datasets]="summaryChartData" [labels]="summaryChartLabels"
-          [options]="lineChartOptions" [legend]="lineChartLegend" chartType="pie">
-    </canvas>
-</div>
-<div class="width-50">
-    <canvas ngChartjs [datasets]="lineChartData" [labels]="lineChartLabels"
-          [options]="lineChartOptions" [legend]="lineChartLegend" [chartType]="lineChartType">
-    </canvas>
+    <div>
+        <div class="inline-block width-50">
+            <table mat-table [dataSource]="summaryTableData" class="width-100" *ngIf="summaryTableData">
+                <ng-container matColumnDef="rank">
+                  <th mat-header-cell *matHeaderCellDef> Rank </th>
+                  <td mat-cell *matCellDef="let item"> {{item.rank}} </td>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let item"> {{item.name}} </td>
+                  </ng-container>
+                <ng-container matColumnDef="count">
+                <th mat-header-cell *matHeaderCellDef> Count </th>
+                <td mat-cell *matCellDef="let item"> {{item.count}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="['rank', 'name', 'count']"></tr>
+                <tr mat-row *matRowDef="let row; columns: ['rank', 'name', 'count']"></tr>
+              </table>
+        </div>
+        <div class="inline-block width-50">
+            <canvas ngChartjs *ngIf="summaryChartData && summaryChartLabels" [datasets]="summaryChartData" [labels]="summaryChartLabels"
+                [options]="lineChartOptions" [legend]="lineChartLegend" chartType="pie">
+            </canvas>
+        </div>
+    </div>
+    
+    <!-- <div>
+        <div class="inline-block width-50">
+            <canvas ngChartjs [datasets]="lineChartData" [labels]="lineChartLabels"
+                [options]="lineChartOptions" [legend]="lineChartLegend" [chartType]="lineChartType">
+            </canvas>
+        </div>
+    </div> -->
 </div>

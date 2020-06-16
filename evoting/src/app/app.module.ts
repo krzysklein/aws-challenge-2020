@@ -11,6 +11,7 @@ import { IndexComponent } from './pages/index/index.component';
 import { VoteComponent } from './pages/vote/vote.component';
 import { ResultsComponent } from './pages/results/results.component';
 import { ResultsDetailsComponent } from './pages/results/results-details/results-details.component';
+import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,10 @@ import { ResultsDetailsComponent } from './pages/results/results-details/results
     FormsModule,
     NgChartjsModule
   ],
-  providers: [],
+  providers: [{
+    provide: MAT_RADIO_DEFAULT_OPTIONS,
+    useValue: { color: 'primary' },
+}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

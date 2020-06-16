@@ -123,17 +123,23 @@ export class ApiService {
   public getVotingResults(electionId: string): Observable<VotingResultModel[]> {
     // TODO: Read from Results Database
     const resultsMock: VotingResultModel[] = [];
-    for (let i = 0; i < 1000; i++) {
-      const votingResult: VotingResultModel = {
-        electionId,
-        electionItemId: this.getRandomArrayElement(['Brandon Stark', 'Theon Greyjoy', 'John Snow']),
-        voterSex: this.getRandomArrayElement(['F', 'M']),
-        voterAge: Math.floor(18 + Math.random() * 50),
-        voterCountry: 'Poland',
-        voterRegion: this.getRandomArrayElement(['Silesia', 'Lesser Poland']),
-        count: Math.floor(1000 + Math.random() * 10000)
-      };
-      resultsMock.push(votingResult);
+    for (const voterRegion of ['Silesia', 'Lesser Poland']) {
+      for (const voterSex of ['F', 'M']) {
+        for (const voterAge of [20, 25, 30, 35, 45, 50, 55, 60, 65]) {
+          for (const electionItemId of ['Brandon Stark', 'Theon Greyjoy', 'John Snow']) {
+            const votingResult: VotingResultModel = {
+              electionId,
+              electionItemId,
+              voterSex,
+              voterAge,
+              voterCountry: 'Poland',
+              voterRegion,
+              count: Math.floor(1000 + Math.random() * 9000)
+            };
+            resultsMock.push(votingResult);
+          }
+        }
+      }
     }
     return of(resultsMock);
   }

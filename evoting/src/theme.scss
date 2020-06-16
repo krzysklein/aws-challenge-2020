@@ -1,0 +1,13 @@
+@import "~@angular/material/theming";
+@include mat-core();
+
+$evoting-app-primary: mat-palette($mat-light-blue);
+$evoting-app-accent: mat-palette($mat-deep-purple);
+$evoting-app-warn: mat-palette($mat-red);
+$evoting-app-theme: mat-light-theme(
+  $evoting-app-primary,
+  $evoting-app-accent,
+  $evoting-app-warn
+);
+
+@include angular-material-theme($evoting-app-theme);

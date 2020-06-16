@@ -1,10 +1,9 @@
-.election-card-container {
-    display: inline-block;
-    margin: 40px;  
-}
 .election-card {
+  display: inline-block;
   width: 320px;
   height: 480px;
+  margin: 10px;
+  vertical-align:top;
 }
 
 .election-card-image {
@@ -13,4 +12,8 @@
   margin-right: auto;
   width: 300px;
   height: 400px;
+}
+
+mat-card-actions {
+  height: 60px;
 }
