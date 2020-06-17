@@ -1,0 +1,38 @@
+.page-container {
+    height: 100%;
+    margin-top: 100px;
+}
+.page-container::after {
+    content: "";
+    background-image: url('/assets/background.png');
+    background-size: cover;
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
+
+.heading-section{
+    text-align: center;
+  }
+  
+  .heading-section h1{
+    font-size: 58px;
+    color: #0070AD;
+  }
+  
+  .heading-section h2{
+    margin-top: 30px;
+  }
+  
+  .heading-button-left{
+    min-width: 144px;
+    max-width: 100%;
+  }
+  
+  .heading-button-right{
+    margin-left: 10px;
+  }
