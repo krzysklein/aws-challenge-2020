@@ -143,7 +143,7 @@ export class ApiService {
         id: '0001-0004',
         name: 'Best series in 2020',
         // tslint:disable-next-line:max-line-length
-        photoUrl: 'https://www.gflesch.com/hubfs/images/Blog_Images/2019%20Q1/printer-color-accuracy-tips.jpg',
+        photoUrl: 'https://fwcdn.pl/nph/49468/2018/15037.7.jpg',
         isActive: true,
         items: [
           {
