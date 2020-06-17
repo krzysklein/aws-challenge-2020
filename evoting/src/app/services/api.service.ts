@@ -114,6 +114,30 @@ export class ApiService {
             photoUrl: 'https://images.radio-canada.ca/q_auto,w_1250/v1/ici-info/16x9/elmo-talk-show-enfants-hbo-famille.PNG'
           }
         ]
+      },
+      {
+        id: '0001-0003',
+        name: 'Favorite Color',
+        // tslint:disable-next-line:max-line-length
+        photoUrl: 'https://www.gflesch.com/hubfs/images/Blog_Images/2019%20Q1/printer-color-accuracy-tips.jpg',
+        isActive: true,
+        items: [
+          {
+            id: '0001-0003-0001',
+            name: 'Red',
+            photoUrl: 'https://i.ytimg.com/vi/FC1C4g8YOA4/hqdefault.jpg'
+          },
+          {
+            id: '0001-0003-0002',
+            name: 'Green',
+            photoUrl: 'https://cache.desktopnexus.com/thumbseg/900/900690-bigthumbnail.jpg'
+          },
+          {
+            id: '0001-0003-0003',
+            name: 'Blue',
+            photoUrl: 'https://media.gettyimages.com/photos/beautiful-woman-wearing-blue-dress-picture-id652928614'
+          }
+        ]
       }
     ];
     const delayMs = Math.floor(Math.random() * 1000 + 1000);

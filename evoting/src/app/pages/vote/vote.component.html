@@ -52,14 +52,14 @@
       </div>
     </mat-step>
     <mat-step>
-      <ng-template matStepLabel>Election</ng-template>
+      <ng-template matStepLabel>Voting</ng-template>
       <div class="voting-step-container">
         <div *ngIf="!elections">
-          <p class="mat-title">Loading elections...</p>
+          <p class="mat-title">Loading...</p>
           <mat-spinner></mat-spinner>
         </div>
         <div *ngIf="elections">
-          <label class="mat-headline">Choose an Election:</label>
+          <label class="mat-headline">Choose a Voting:</label>
           <mat-radio-group class="election-radio-group" [(ngModel)]="election">
             <mat-radio-button class="election-radio-button" *ngFor="let e of elections" [value]="e">
               {{e.name}}
@@ -73,10 +73,10 @@
       </div>
     </mat-step>
     <mat-step>
-      <ng-template matStepLabel>Candidate</ng-template>
+      <ng-template matStepLabel>Option</ng-template>
       <div class="voting-step-container">
         <div class="vote-list-container" *ngIf="election">
-          <p class="mat-headline">Choose your candidate:</p>      
+          <p class="mat-headline">Choose your option:</p>      
           <mat-card class="vote-card mat-elevation-z8" *ngFor="let v of election.items" (click)="selectVote(v)" [ngClass]="{'vote-card-selected': v == voteItem }">
             <mat-card-header>
               <mat-card-title>{{v.name}}</mat-card-title>
