@@ -138,6 +138,40 @@ export class ApiService {
             photoUrl: 'https://media.gettyimages.com/photos/beautiful-woman-wearing-blue-dress-picture-id652928614'
           }
         ]
+      },
+      {
+        id: '0001-0004',
+        name: 'Best series in 2020',
+        // tslint:disable-next-line:max-line-length
+        photoUrl: 'https://www.gflesch.com/hubfs/images/Blog_Images/2019%20Q1/printer-color-accuracy-tips.jpg',
+        isActive: true,
+        items: [
+          {
+            id: '0001-0004-0001',
+            name: 'Our Planet',
+            photoUrl: 'https://fwcdn.pl/fpo/47/61/814761/7880429.6.jpg'
+          },
+          {
+            id: '0001-0004-0002',
+            name: 'Chernobyl',
+            photoUrl: 'https://fwcdn.pl/fpo/98/27/799827/7900027_1.6.jpg'
+          },
+          {
+            id: '0001-0004-0003',
+            name: 'Game of Thrones',
+            photoUrl: 'https://fwcdn.pl/fpo/68/48/476848/7794141.6.jpg'
+          },
+          {
+            id: '0001-0004-0004',
+            name: 'Breaking Bad',
+            photoUrl: 'https://fwcdn.pl/fpo/06/68/430668/7730445.6.jpg'
+          },
+          {
+            id: '0001-0004-0005',
+            name: 'Band of Brothers',
+            photoUrl: 'https://fwcdn.pl/fpo/55/84/35584/7402986.6.jpg'
+          }
+        ]
       }
     ];
     const delayMs = Math.floor(Math.random() * 1000 + 1000);
